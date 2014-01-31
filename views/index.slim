@@ -1,0 +1,12 @@
+h1
+  a href='/' Sinatra Filer
+
+#dirtree
+  ul
+    - @dirs.each do |name, full|
+      li
+        a href=('/?path=' + h(full))
+          = name
+    - @files.each do |name, full|
+      li
+        = name
