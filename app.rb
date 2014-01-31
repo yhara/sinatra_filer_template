@@ -7,10 +7,10 @@ class App < Sinatra::Base
     register Sinatra::Reloader
   end
 
-  DEFAULT_DIR = File.expand_path("~")
+  DEFAULT_DIR = "~/"
 
   get '/' do
-    dir = params[:path] || DEFAULT_DIR
+    dir = File.expand_path(params[:path] || DEFAULT_DIR)
     @dirs, @files = Dir.entries(dir).map{|name|
       [name, File.expand_path(name, dir)]
     }.partition{|name, full|

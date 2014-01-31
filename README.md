@@ -25,10 +25,10 @@ If you will make this app available on the internet,
 you should add a validation on params[:path] like this: 
 
 ```ruby
-  PUBLIC_ROOT = File.expand_path("~/somewhere")
+  PUBLIC_ROOT = "~/somewhere"
   ...
-  dir = File.expand_path(params[:path]) || PUBLIC_ROOT
-  raise unless dir.start_with?(PUBLIC_ROOT)
+  dir = File.expand_path(params[:path] || PUBLIC_ROOT)
+  raise unless dir.start_with?(File.expand_path(PUBLIC_ROOT))
 ```
 
 ## License
