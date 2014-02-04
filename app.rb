@@ -11,7 +11,7 @@ class App < Sinatra::Base
 
   get '/' do
     dir = File.expand_path(params[:path] || DEFAULT_DIR)
-    @dirs, @files = Dir.entries(dir).map{|name|
+    @dirs, @files = Dir.entries(dir).sort.map{|name|
       [name, File.expand_path(name, dir)]
     }.partition{|name, full|
       File.directory?(full)
